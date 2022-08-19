@@ -1,0 +1,17 @@
+export enum NConst {
+  HOME = "Home",
+  HOME_STACK = "HomeStack",
+  RIDE_LIST = "RideList",
+  RIDE_STACK = "RideStack",
+  RIDE_DETAILS = "RideDetails",
+  RN_CAMERA = "RnCamera",
+  CALENDAR = "Calendar",
+  NOTIFICATIONS = "Notifications",
+  SIGN_IN = "SignIn",
+  SIGN_UP = "SignUp",
+  AUTH_STACK = "AuthStack",
+  SIGNATURE = "Signature",
+  PRIVATE_STACK = "PrivateStack",
+  PRIVATE_DRAWER = "PrivateDrawer",
+  BOOKINGS = "Bookings",
+}

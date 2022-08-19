@@ -1,26 +1,53 @@
-import { CompositeNavigationProp, RouteProp } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { NConst } from "constants";
 
-export type HomeStackNavigatorParamList = {
-  Home: undefined;
-  Details: {
-    name: string;
-    birthYear: string;
+import type {
+  CompositeNavigationProp,
+  NavigatorScreenParams,
+} from "@react-navigation/native";
+import type { StackScreenProps } from "@react-navigation/stack";
+
+/** Root Stack */
+export interface IRootStackParamList {
+  [NConst.HOME_STACK]: NavigatorScreenParams<THomeStackParamList>;
+  [NConst.RIDE_STACK]: NavigatorScreenParams<TRiderStackParamList>;
+  [NConst.AUTH_STACK]: NavigatorScreenParams<TAuthStackParamList>;
+}
+
+export interface IRootStackScreenProps<T extends keyof IRootStackParamList>
+  extends StackScreenProps<IRootStackParamList, T> {}
+
+/** Home Stack types */
+export type THomeStackParamList = {
+  [NConst.HOME]: undefined;
+  [NConst.HOME]: undefined;
+  [NConst.CALENDAR]: undefined;
+  [NConst.RN_CAMERA]: undefined;
+  [NConst.NOTIFICATIONS]: undefined;
+  [NConst.SIGNATURE]: undefined;
+};
+
+export type THomeStackScreenProps<T extends keyof THomeStackParamList> =
+  CompositeNavigationProp<
+    StackScreenProps<THomeStackParamList, T>,
+    IRootStackScreenProps<keyof IRootStackParamList>
+  >;
+
+/** Rider Stack types */
+export type TRiderStackParamList = {
+  [NConst.RIDE_LIST]: undefined;
+  [NConst.RIDE_DETAILS]: {
+    riderId: number;
   };
 };
 
-export type DetailsScreenRouteProp = RouteProp<
-  HomeStackNavigatorParamList,
-  "Details"
->;
-
-export type BottomTabNavigationParamList = {
-  Home: HomeStackNavigatorParamList;
-  Feed: undefined;
-  Settings: undefined;
+/** Authentication Stack types */
+export type TAuthStackParamList = {
+  [NConst.SIGN_IN]: undefined;
+  [NConst.SIGN_UP]: undefined;
 };
 
-export type HomeScreenNavigationProp = CompositeNavigationProp<
-  NativeStackNavigationProp<HomeStackNavigatorParamList, "Details">,
-  BottomTabNavigationProp<BottomTabNavigatorParamList, "Feed">
->;
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList extends IRootStackParamList {}
+  }
+}

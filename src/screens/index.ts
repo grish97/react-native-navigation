@@ -1,4 +1,10 @@
-export { DetailsScreen } from "./DetailsScreen";
-export { HomeScreen } from "./HomeScreen";
-export { FeedScreen } from "./FeedScreen";
-export { SettingsScreen } from "./SettingsScreen";
+export { Home } from "screens/Home";
+export { RideDetail } from "screens/RideDetail";
+export { RideList } from "screens/RideList";
+export { Calendar } from "screens/Calendar";
+export { Notification } from "screens/Notification";
+export { RNCamera } from "screens/RNCamera";
+export { Signature } from "screens/Signature";
+export { SignUp } from "screens/SignUp";
+export { SignIn } from "screens/SignIn";
+export { Bookings } from "screens/Bookings";
